@@ -1,0 +1,27 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: blueapp1-service
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  type: NodePort
+  selector:
+    app: blueapp1
+  ports:
+    - port: 80 # Default port for image
+      nodePort: 31000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redapp2-service
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  type: NodePort
+  selector:
+    app: redapp2
+  ports:
+    - port: 80 # Default port for image
+      nodePort: 31001

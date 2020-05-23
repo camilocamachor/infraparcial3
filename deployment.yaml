@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blueapp1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: blueapp1
+  template:
+    metadata:
+      labels:
+        app: blueapp1
+    spec:
+      containers:
+        - name: blueapp1
+          image: sockshead/react-img:app1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redapp2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: redapp2
+  template:
+    metadata:
+      labels:
+        app: redapp2
+    spec:
+      containers:
+        - name: redapp2
+          image: sockshead/react-img:app2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
